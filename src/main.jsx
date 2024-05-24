@@ -2,9 +2,30 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import Satoshi from './assets/fonts/Satoshi-Variable.ttf'
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material'
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Satoshi, Sans-serif',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          url(${Satoshi})
+        }
+      `,
+    },
+  },
+});
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
 )
